@@ -1,0 +1,95 @@
+#main{
+    
+    height: 200px;
+    width: 300px;
+    background-color: white;
+    position: relative;
+}
+#circle{
+    height: 100px;
+    width: 100px;
+    background-color: red;
+    border-radius: 70%;
+    position: absolute;
+    left: 100px;
+    top: 50px;
+}
+
+#org{ 
+    height: 66px;
+    width: 300px;
+    background-color: rgb(211, 88, 22);
+    
+
+}
+#white{
+    height:66px;
+    width: 300px;
+    background-color: rgb(255, 255, 255);
+}
+#grn{
+    height: 66px;
+    width: 300px;
+    background-color: green;
+}
+
+#saudi {
+    height: 200px;
+    width: 300px;
+    background-color: rgb(2, 42, 2); 
+    position: relative;
+    margin: 50px auto;
+    display: flex;
+    align-items: center;  
+    justify-content: center; 
+}
+
+#klm {
+    font-family: "Amiri", serif; 
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    line-height: 1.5;
+    font-style: normal;
+    white-space: nowrap; 
+}
+
+
+#swdn{
+    height: 200px;
+    width: 300px;
+    background-color: rgb(37, 37, 184);
+
+}
+#hr{
+    height: 200px;
+    width: 20px;
+    background-color: rgb(195, 195, 14);
+    position: relative;
+    left: 90px;
+}
+#vr{
+    height: 20px;
+    width: 300px;
+    background-color: rgb(195, 195, 14);
+    position: relative;
+    bottom: 120px;
+}
+
+#ru{
+    height: 200px;
+    width: 300px;
+   
+}
+#wh{
+    height: 66px;
+    background-color: white;
+}
+#bl{
+    height: 66px;
+    background-color: blue;
+}
+#rd{
+    height: 66px;
+    background-color: red;
+}

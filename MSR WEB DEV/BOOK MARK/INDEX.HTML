@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sohaib Rashid — MSR Portfolio</title>
+  <meta name="description" content="Portfolio of Sohaib Rashid — Aspiring AI/ML Engineer, incoming B.Tech CSE. 5 live projects built before college.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Noise overlay -->
+  <div class="noise"></div>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <span class="nav-logo">MSR</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#stack">Stack</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="about">
+    <div class="hero-tag">Incoming B.Tech CSE · KV No. 1 Armapur, Kanpur</div>
+    <h1 class="hero-name">
+      <span class="line">Sohaib</span>
+      <span class="line accent">Rashid</span>
+    </h1>
+    <p class="hero-role">Aspiring AI / ML Engineer</p>
+    <p class="hero-bio">
+      CBSE Class 12 graduate (PCM + CS) — not waiting for college to start building.
+      Currently mastering <em>Java + DSA</em>, with Advanced Python next.
+      Long-term goal: AI/ML Engineering. Right now: shipping real projects.
+    </p>
+    <div class="hero-values">
+      <span>Consistency over bursts</span>
+      <span>Real skills over certificates</span>
+      <span>Practical over theoretical</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="https://www.linkedin.com/in/sohaib-rashid-msr" target="_blank" class="btn-ghost">LinkedIn</a>
+    </div>
+    <div class="hero-scroll">scroll</div>
+  </section>
+
+  <!-- Stats bar -->
+  <div class="stats-bar">
+    <div class="stat"><span class="stat-num">5</span><span class="stat-label">Live Projects</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><span class="stat-num">3</span><span class="stat-label">Hosting Platforms</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><span class="stat-num">70+</span><span class="stat-label">PYQ Analysis Links</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><span class="stat-num">Real</span><span class="stat-label">UPI Transactions</span></div>
+  </div>
+
+  <!-- Projects -->
+  <section class="projects" id="projects">
+    <div class="section-header">
+      <span class="section-tag">// projects</span>
+      <h2>Built Before College</h2>
+      <p>Every project is live. Every project solves a real problem.</p>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- FoodGuard -->
+      <div class="project-card featured" data-color="green">
+        <div class="card-top">
+          <div class="card-number">01</div>
+          <div class="card-badges">
+            <span class="badge live">Live</span>
+            <span class="badge">SEO Optimized</span>
+          </div>
+        </div>
+        <h3>MSR FoodGuard</h3>
+        <p class="card-tag">Food Additive Checker</p>
+        <p class="card-desc">Free tool to check any E-code or INS code — instantly know if an additive is safe, vegetarian, halal, Jain-friendly, or FSSAI-approved. Built because people had no easy way to decode packaged food labels.</p>
+        <ul class="card-features">
+          <li>9+ feature pages including quiz and emergency alerts</li>
+          <li>Halal/Haram E-code guide & banned additives list</li>
+          <li>Full SEO with Open Graph + Google Search Console</li>
+        </ul>
+        <div class="card-tech">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Netlify</span>
+        </div>
+        <a href="https://foodguardmsr.netlify.app/" target="_blank" class="card-link">
+          Visit Site <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <!-- PYQ Store -->
+      <div class="project-card" data-color="amber">
+        <div class="card-top">
+          <div class="card-number">02</div>
+          <div class="card-badges">
+            <span class="badge live">Live</span>
+            <span class="badge gold">Real Money</span>
+          </div>
+        </div>
+        <h3>PYQ Store</h3>
+        <p class="card-tag">Digital Product + UPI Payments</p>
+        <p class="card-desc">A fully working digital store where students pay via UPI and receive previous year question paper PDFs by email within one hour. Real transactions. Real customers. Real support.</p>
+        <ul class="card-features">
+          <li>UPI payment flow with transaction verification</li>
+          <li>Email delivery system + WhatsApp support</li>
+          <li>Hosted on Railway with full backend</li>
+        </ul>
+        <div class="card-tech">
+          <span>HTML</span><span>CSS</span><span>JS</span><span>Railway</span><span>UPI API</span>
+        </div>
+        <a href="https://pyq.up.railway.app/" target="_blank" class="card-link">
+          Visit Site <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <!-- ShopHub -->
+      <div class="project-card" data-color="purple">
+        <div class="card-top">
+          <div class="card-number">03</div>
+          <div class="card-badges">
+            <span class="badge live">Live</span>
+          </div>
+        </div>
+        <h3>MSR ShopHub</h3>
+        <p class="card-tag">E-Commerce Frontend</p>
+        <p class="card-desc">Full e-commerce frontend with separate routes for product catalog, cart, wishlist, user profile, and a complete admin panel. Built to understand how real shopping platforms are architected.</p>
+        <ul class="card-features">
+          <li>Cart, Wishlist, Profile, Admin Panel routes</li>
+          <li>Auth system and user role separation</li>
+          <li>Multi-page SPA architecture</li>
+        </ul>
+        <div class="card-tech">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Netlify</span>
+        </div>
+        <a href="https://msrshophub.netlify.app/" target="_blank" class="card-link">
+          Visit Site <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <!-- MSR Notes -->
+      <div class="project-card" data-color="blue">
+        <div class="card-top">
+          <div class="card-number">04</div>
+          <div class="card-badges">
+            <span class="badge live">Live</span>
+            <span class="badge">CBSE</span>
+          </div>
+        </div>
+        <h3>MSR Notes</h3>
+        <p class="card-tag">Class 12 PYQ Analysis Portal</p>
+        <p class="card-desc">Study portal built during board prep — 6 subjects, 70+ chapter-wise PYQ analysis links covering 2021–2025. Built for myself and shared with fellow students.</p>
+        <ul class="card-features">
+          <li>6 subjects: Bio, Physics, Chem, Maths, CS, English</li>
+          <li>70+ PYQ links · 2021–2025 coverage</li>
+          <li>Google Forms feedback system + full SEO</li>
+        </ul>
+        <div class="card-tech">
+          <span>HTML</span><span>CSS</span><span>JS</span><span>Netlify</span>
+        </div>
+        <a href="https://sohaib-msr.netlify.app/" target="_blank" class="card-link">
+          Visit Site <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <!-- FoodGuard First -->
+      <div class="project-card" data-color="teal">
+        <div class="card-top">
+          <div class="card-number">05</div>
+          <div class="card-badges">
+            <span class="badge">v1.0</span>
+          </div>
+        </div>
+        <h3>FoodGuard First</h3>
+        <p class="card-tag">Original Version</p>
+        <p class="card-desc">The first version of FoodGuard — where the idea started. A simpler additive checker that evolved into the full MSR FoodGuard. Kept live as a milestone of the journey.</p>
+        <ul class="card-features">
+          <li>Original E-code checker concept</li>
+          <li>The prototype that started it all</li>
+        </ul>
+        <div class="card-tech">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Netlify</span>
+        </div>
+        <a href="https://msrfoodguardfirst.netlify.app/" target="_blank" class="card-link">
+          Visit Site <span class="arrow">→</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Stack & Tools -->
+  <section class="stack" id="stack">
+    <div class="section-header">
+      <span class="section-tag">// stack</span>
+      <h2>Skills & Tools</h2>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-group">
+        <h4>Currently Learning</h4>
+        <div class="stack-items">
+          <div class="stack-item active">Java</div>
+          <div class="stack-item active">DSA</div>
+          <div class="stack-item next">Advanced Python</div>
+        </div>
+      </div>
+      <div class="stack-group">
+        <h4>Building With</h4>
+        <div class="stack-items">
+          <div class="stack-item">HTML</div>
+          <div class="stack-item">CSS</div>
+          <div class="stack-item">JavaScript</div>
+          <div class="stack-item">Python</div>
+        </div>
+      </div>
+      <div class="stack-group">
+        <h4>Platforms</h4>
+        <div class="stack-items">
+          <div class="stack-item">Netlify</div>
+          <div class="stack-item">Railway</div>
+          <div class="stack-item">GitHub</div>
+        </div>
+      </div>
+      <div class="stack-group">
+        <h4>AI Tools Used</h4>
+        <div class="stack-items">
+          <div class="stack-item ai">Cursor</div>
+          <div class="stack-item ai">Grok</div>
+          <div class="stack-item ai">Claude</div>
+        </div>
+      </div>
+      <div class="stack-group">
+        <h4>Focused On</h4>
+        <div class="stack-items">
+          <div class="stack-item future">AI / ML</div>
+          <div class="stack-item future">Web Dev</div>
+          <div class="stack-item future">IoT</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="section-header">
+      <span class="section-tag">// contact</span>
+      <h2>Let's Connect</h2>
+      <p>Open to learning opportunities, tech communities, and people building things.</p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:rashidsohaib10232@gmail.com" class="contact-card">
+        <span class="contact-icon">✉</span>
+        <span class="contact-label">Email</span>
+        <span class="contact-value">rashidsohaib10232@gmail.com</span>
+      </a>
+      <a href="https://wa.me/919455593768" target="_blank" class="contact-card">
+        <span class="contact-icon">◎</span>
+        <span class="contact-label">WhatsApp</span>
+        <span class="contact-value">+91 94555 93768</span>
+      </a>
+      <a href="https://project-msr.netlify.app" target="_blank" class="contact-card">
+        <span class="contact-icon">⬡</span>
+        <span class="contact-label">Portfolio Hub</span>
+        <span class="contact-value">project-msr.netlify.app</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-left">
+      <span class="footer-logo">MSR</span>
+      <span>Sohaib Rashid · Kanpur · 2025</span>
+    </div>
+    <div class="footer-right">
+      Built with HTML, CSS, JS · Hosted on Netlify
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

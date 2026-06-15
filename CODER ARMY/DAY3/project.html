@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Registration Form</title>
+</head>
+<body style="background-color: rgb(2, 29, 9,0.6);">
+    <h1>University Registration Form</h1>
+    <p>Please fill out the form below to register</p>
+    <hr>
+    <form action="">
+        <h2>Personal Details</h2>
+        <label for="fname">First Name:-</label>
+        <input type="text" placeholder="e.g. Sohaib" name="fname" id="fname">
+        <br>
+        <label for="lname">Last Name:-</label>
+        <input type="text" placeholder="e.g Rashid" name="lname" id="lname">
+        <br>
+        <label for="dob">Date Of Birth: </label>
+        <input type="date" name="dob" id="dob">
+        <br>
+        <p>Gender:- </p>
+        <label for="male">Male</label>
+        <input type="radio" name="gender" id="male" value="male"> <br>
+        <label for="fm">Female</label>
+        <input type="radio" name="gender" id="fm" value="fmale"> <br>
+        <label for="ot">Other</label>
+        <input type="radio" name="gender" id="ot" value="other">
+        <br>
+
+        <h2>Upload Your Photo</h2>
+        <input type="file" name="file">
+        <hr>
+
+        <h2>Contact Information</h2>
+        <label for="email">Email Address:- </label>
+        <input type="text" name="email" id="email">
+        <br>
+        <label for="tel">Phone Number:-</label>
+        <input type="tel" placeholder="9455593766" name="tel" id="tel">
+        <br>
+        <label for="mail">Mailing Address:-</label>
+        <textarea name="address" id="mail" placeholder="Street No. 123, Example Colony, City, State, 208009"></textarea>
+        <hr>
+
+        <h2>Academic Information</h2> <br>
+        <label for="board">Board</label>
+        <input type="text" name="board" id="board">
+        <br>
+        <label for="Stream">Stream</label>
+        <input type="text" name="Stream" id="Stream" required>
+        <br>
+        <label for="class10">Class 10 % </label>
+        
+        <input type="number" name="class10" id="class10" required> 
+        <br>
+        <label for="class12">Class 12 % </label>
+        <input type="number" name="class12" id="class12" required>
+        <br>
+        <label for="school"> Name of Your School from class 12 pass out </label>
+        <input type="text" name="school" id="school">
+        <br>
+        <label for="course">Select Your Course</label>
+        <select name="course" id="course">
+            <option value="">SELECT OPTION</option>
+            <option value="CS">CS</option>
+            <option value="CSE">CSE</option>
+            <option value="ME">ME</option>
+            <option value="AI">AI/ML</option>
+            <option value="DS">DS</option>
+            <option value="IT">IT</option>
+            <option value="EE">EE</option>
+        </select>
+        <br>
+        <p>Extracurricular Interests</p>
+        <label for="Sports">Sports</label>
+        <input type="checkbox" name="Intersts" id="Sports"><br>
+        <label for="MusicArts">Music & Arts</label>
+        <input type="checkbox" name="Intersts" id="MusicArts"><br>
+        <label for="TechClubs">Technology Clubs</label>
+        <input type="checkbox" name="Intersts" id="TechClubs"><br>
+        <label for="Volunteering">Volunteering</label>
+        <input type="checkbox" name="Intersts" id="Volunteering"><br>
+        <hr>
+
+        <h2>Create Your Account</h2>
+        <label for="passwd">Create a Password</label>
+        <input type="password" name="passwd" id="passwd"><br>
+        <label for="q">Security Question:-</label>
+        <select name="q" id="q">
+            <option value="What was Your first pet's name ?">What was Your first pet's name ?</option>
+            <option value="What was Your first school name ?">What was Your first school name ?</option>
+            <option value="What was the name of Your first Teacher ?">What was the name of Your first Teacher ?</option>
+            <option value="What is your nickname">What is your nickname</option>
+        </select>
+        <br>
+        <label for="ans">Security Answer:-</label>
+        <input type="text" name="ans" id="ans"><br>
+        <label for="terms">I agree the Terms and Conditions.</label>
+        <input type="checkbox" name="terms" id="terms">
+        <br><br>
+
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+
+    <!-- ✅ Script BODY ke end mein — DOM load hone ke baad -->
+    <script>
+        const SUPABASE_URL = 'https://zieouchvzqbtbsyndgoa.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InppZW91Y2h2enFidGJzeW5kZ29hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA5MjEwMTAsImV4cCI6MjA5NjQ5NzAxMH0.JtTihOrJwBUazXJsboHcgy44d3iYiObbFlgZcggsFuE';
+
+        const { createClient } = supabase;
+        const client = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        document.querySelector('button[type="submit"]').addEventListener('click', async (e) => {
+            e.preventDefault();
+
+            const interests = [];
+            document.querySelectorAll('input[name="Intersts"]:checked').forEach(cb => {
+                interests.push(cb.id);
+            });
+
+            const formData = {
+                first_name:        document.getElementById('fname').value,
+                last_name:         document.getElementById('lname').value,
+                dob:               document.getElementById('dob').value || null,
+                gender:            document.querySelector('input[name="gender"]:checked')?.value || null,
+                email:             document.getElementById('email').value,
+                phone:             document.getElementById('tel').value,
+                address:           document.getElementById('mail').value,
+                course:            document.getElementById('course').value,
+                interests:         interests,
+                password:          document.getElementById('passwd').value,
+                security_question: document.getElementById('q').value,
+                security_answer:   document.getElementById('ans').value,
+                Board :   document.getElementById('board').value,
+                stream :   document.getElementById('Stream').value,
+                class10 :   document.getElementById('class10').value,
+                class12 :   document.getElementById('class12').value,
+                school :   document.getElementById('school').value,
+            
+                
+            };
+
+            console.log('Sending:', formData); 
+
+            const { data, error } = await client
+                .from('vs_registrations')
+                .insert([formData]);
+
+            if (error) {
+                console.error('Supabase error:', error);
+                alert('Error: ' + error.message);
+            } else {
+                alert('Registration successful!');
+                document.querySelector('form').reset();
+            }
+        });
+    </script>
+</body>
+</html>

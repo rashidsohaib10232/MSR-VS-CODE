@@ -1,0 +1,33 @@
+h1{
+    background-color: rgba(37, 186, 11, 0.5);
+    height: 100px;
+    width: 800px;
+
+    border-width: 20px;
+    border-style: solid;
+    border-color: brown;
+   
+
+    padding: 20px;
+
+    margin: 15px;
+
+    /*border:20px solid rgb(18, 115, 134)*/
+}
+h2{
+    margin: 30px;
+    background-color: aquamarine;
+    border: 15px solid rgb(27, 11, 209)
+}
+
+#hh{
+    background-color: rgba(37, 186, 11, 0.5);
+    height: 100px;
+    width: 800px;
+
+    border-width: 10px;
+    border-style: solid;
+    border-color: rgb(192, 41, 41);
+    display: inline ;
+
+}

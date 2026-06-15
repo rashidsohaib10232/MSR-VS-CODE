@@ -1,0 +1,30 @@
+#main{
+    height: 70000px;
+    background-color: antiquewhite;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+ 
+    
+    
+    
+}
+.box{
+    margin: 5px;
+}
+#one{
+    height: 100px;
+    width: 200px;
+    background-color: blue;
+}
+#thr{
+    height: 100px;
+    width: 200px;
+    background-color: blueviolet;
+}
+#fou{
+    height: 100px;
+    width: 200px;
+    background-color: aqua;
+}
