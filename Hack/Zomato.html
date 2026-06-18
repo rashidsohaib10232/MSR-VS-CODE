@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Zomato · Restaurant Listing</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ----- RESET & BASE ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fb;
+            color: #1e1e2a;
+            line-height: 1.4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ----- NAVBAR (Zomato style) ----- */
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            padding: 0.9rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem 0.5rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #e23744;
+            letter-spacing: -0.5px;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: #e23744;
+        }
+
+        .logo span {
+            color: #1e1e2a;
+            font-weight: 300;
+        }
+
+        .search-wrapper {
+            flex: 1 1 280px;
+            max-width: 460px;
+            display: flex;
+            align-items: center;
+            background: #f2f4f8;
+            border-radius: 40px;
+            padding: 0.4rem 0.4rem 0.4rem 1.2rem;
+            border: 1px solid #e9edf2;
+            transition: all 0.2s ease;
+        }
+
+        .search-wrapper:focus-within {
+            border-color: #e23744;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(226, 55, 68, 0.08);
+        }
+
+        .search-wrapper i {
+            color: #8b95a5;
+            font-size: 0.95rem;
+        }
+
+        .search-wrapper input {
+            border: none;
+            background: transparent;
+            padding: 0.65rem 0.8rem;
+            font-size: 0.95rem;
+            width: 100%;
+            outline: none;
+            color: #1e1e2a;
+        }
+
+        .search-wrapper input::placeholder {
+            color: #9aa3b3;
+            font-weight: 400;
+        }
+
+        .signin-btn {
+            background: #e23744;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.6rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            box-shadow: 0 4px 10px -4px rgba(226, 55, 68, 0.25);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .signin-btn:hover {
+            background: #c92a36;
+            transform: scale(1.02);
+            box-shadow: 0 8px 18px -6px rgba(226, 55, 68, 0.35);
+        }
+
+        .signin-btn i {
+            margin-right: 6px;
+        }
+
+        /* ----- HERO SECTION (restaurant hero) ----- */
+        .hero {
+            margin: 2rem 0 2.5rem 0;
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px -8px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 220px;
+            background: #eef1f5;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-content {
+            padding: 1.5rem 1.8rem 1.8rem 1.8rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            row-gap: 0.8rem;
+        }
+
+        .hero-text h1 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            color: #1e1e2a;
+        }
+
+        .hero-text .cuisine-tag {
+            display: inline-block;
+            background: #f1f4f8;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #4b5563;
+            margin-top: 4px;
+        }
+
+        .hero-rating {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: #f8fafc;
+            padding: 0.5rem 1.4rem 0.5rem 1rem;
+            border-radius: 60px;
+            border: 1px solid #eef2f6;
+        }
+
+        .hero-rating .stars {
+            display: flex;
+            gap: 2px;
+            color: #fbbf24;
+        }
+
+        .hero-rating .stars i {
+            font-size: 0.95rem;
+        }
+
+        .hero-rating .rating-number {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #1e1e2a;
+        }
+
+        .hero-rating .rating-label {
+            font-weight: 400;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        /* ----- FOOD CARDS SECTION (3 cards) ----- */
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: #1e1e2a;
+            letter-spacing: -0.2px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .food-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02);
+            border: 1px solid #f0f3f8;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .food-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.08);
+            border-color: #e5eaf0;
+        }
+
+        .food-card-img {
+            height: 150px;
+            background: #eef1f5;
+            overflow: hidden;
+        }
+
+        .food-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .food-card:hover .food-card-img img {
+            transform: scale(1.04);
+        }
+
+        .food-card-body {
+            padding: 1rem 1.2rem 1.2rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex: 1;
+        }
+
+        .food-card-body h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e1e2a;
+        }
+
+        .food-card-body .price {
+            font-weight: 600;
+            color: #e23744;
+            font-size: 1.1rem;
+            letter-spacing: -0.2px;
+        }
+
+        .food-card-body .price small {
+            font-weight: 400;
+            color: #6b7280;
+            font-size: 0.75rem;
+            margin-left: 4px;
+        }
+
+        .add-btn {
+            margin-top: auto;
+            background: #e23744;
+            color: white;
+            border: none;
+            padding: 0.7rem 0;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 4px 10px -4px rgba(226, 55, 68, 0.2);
+        }
+
+        .add-btn i {
+            font-size: 0.9rem;
+        }
+
+        .add-btn:hover {
+            background: #c92a36;
+            transform: scale(1.02);
+            box-shadow: 0 8px 18px -6px rgba(226, 55, 68, 0.3);
+        }
+
+        .add-btn:active {
+            transform: scale(0.96);
+        }
+
+        /* ----- FOOTER (simple links) ----- */
+        .footer {
+            background: white;
+            border-top: 1px solid #eef2f6;
+            padding: 2rem 0 1.8rem 0;
+            margin-top: 1.5rem;
+        }
+
+        .footer .container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.2rem 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2.2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #4b5563;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 450;
+            transition: color 0.15s ease;
+        }
+
+        .footer-links a:hover {
+            color: #e23744;
+        }
+
+        .footer-copy {
+            color: #8b95a5;
+            font-size: 0.9rem;
+        }
+
+        .footer-copy i {
+            color: #e23744;
+        }
+
+        /* ----- RESPONSIVE TWEAKS ----- */
+        @media (max-width: 700px) {
+            .navbar .container {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .logo {
+                font-size: 1.6rem;
+            }
+            .search-wrapper {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+            .signin-btn {
+                padding: 0.5rem 1.4rem;
+                font-size: 0.9rem;
+            }
+            .hero-content {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1.2rem;
+            }
+            .hero-rating {
+                align-self: flex-start;
+                padding: 0.4rem 1rem;
+            }
+            .hero-text h1 {
+                font-size: 1.6rem;
+            }
+            .cards-grid {
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                gap: 1rem;
+            }
+            .footer .container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-links {
+                justify-content: center;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+            .hero-image {
+                height: 160px;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.9rem;
+            }
+            .food-card-img {
+                height: 120px;
+            }
+            .food-card-body h3 {
+                font-size: 1rem;
+            }
+            .food-card-body .price {
+                font-size: 1rem;
+            }
+            .add-btn {
+                font-size: 0.85rem;
+                padding: 0.6rem 0;
+            }
+            .section-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+                max-width: 280px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        /* small extras */
+        .badge-icon {
+            background: #eef2f6;
+            border-radius: 40px;
+            padding: 0.2rem 0.8rem;
+        }
+        .flex-center {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-utensils"></i> 
+                <span>Zom</span>ato
+            </div>
+
+            <div class="search-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search for restaurants, dishes..." aria-label="Search">
+            </div>
+
+            <button class="signin-btn" onclick="alert('🔐 Sign in demo')">
+                <i class="fas fa-user-circle"></i> Sign In
+            </button>
+        </div>
+    </nav>
+
+    <!-- ========== MAIN ========== -->
+    <main class="container">
+
+        <!-- HERO SECTION: restaurant image + name + rating -->
+        <section class="hero">
+            <div class="hero-image">
+                <img 
+                    src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=400&fit=crop&crop=center&auto=format" 
+                    alt="Restaurant interior" 
+                    loading="lazy"
+                >
+            </div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Copper & Cloves <span style="font-weight: 400; font-size: 1rem; color: #6b7280; margin-left: 6px;">🍽️</span></h1>
+                    <span class="cuisine-tag"><i class="fas fa-fire" style="margin-right: 4px;"></i> Indian · Continental</span>
+                </div>
+                <div class="hero-rating">
+                    <span class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </span>
+                    <span class="rating-number">4.6</span>
+                    <span class="rating-label">(2.1k reviews)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION TITLE -->
+        <h2 class="section-title"><i class="fas fa-fire" style="color: #e23744; margin-right: 10px;"></i> Popular dishes</h2>
+
+        <!-- ===== 3 FOOD CARDS ===== -->
+        <div class="cards-grid">
+
+            <!-- Card 1 -->
+            <div class="food-card">
+                <div class="food-card-img">
+                    <img 
+                        src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=300&fit=crop&crop=center&auto=format" 
+                        alt="Butter Chicken" 
+                        loading="lazy"
+                    >
+                </div>
+                <div class="food-card-body">
+                    <h3>Butter Chicken</h3>
+                    <div class="price">₹325 <small>· classic</small></div>
+                    <button class="add-btn" onclick="alert('✅ Butter Chicken added to cart')">
+                        <i class="fas fa-plus-circle"></i> Add
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="food-card">
+                <div class="food-card-img">
+                    <img 
+                        src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=400&h=300&fit=crop&crop=center&auto=format" 
+                        alt="Garlic Naan" 
+                        loading="lazy"
+                    >
+                </div>
+                <div class="food-card-body">
+                    <h3>Garlic Naan</h3>
+                    <div class="price">₹85 <small>· fresh</small></div>
+                    <button class="add-btn" onclick="alert('✅ Garlic Naan added to cart')">
+                        <i class="fas fa-plus-circle"></i> Add
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="food-card">
+                <div class="food-card-img">
+                    <img 
+                        src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop&crop=center&auto=format" 
+                        alt="Gulab Jamun" 
+                        loading="lazy"
+                    >
+                </div>
+                <div class="food-card-body">
+                    <h3>Gulab Jamun</h3>
+                    <div class="price">₹120 <small>· 2 pcs</small></div>
+                    <button class="add-btn" onclick="alert('✅ Gulab Jamun added to cart')">
+                        <i class="fas fa-plus-circle"></i> Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#"><i class="fas fa-home" style="margin-right: 4px;"></i> Home</a>
+                <a href="#"><i class="fas fa-info-circle"></i> About</a>
+                <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="#"><i class="fas fa-shield-alt"></i> Privacy</a>
+            </div>
+            <div class="footer-copy">
+                <i class="fas fa-heart" style="margin-right: 4px;"></i> 2026 · Zomato-style demo
+            </div>
+        </div>
+    </footer>
+
+    <!-- optional demo script -->
+    <script>
+        // just a tiny interactive hint 
+        console.log('🍽️ Zomato-style page ready');
+        // search input can show alert for demo (optional)
+        const searchInput = document.querySelector('.search-wrapper input');
+        if (searchInput) {
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    alert(`🔍 Searching for: "${searchInput.value}"`);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

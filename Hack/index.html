@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- SEO Meta Tags (exact copy) -->
+  <title>TechNova — Build Faster. Ship Smarter.</title>
+  <meta name="description" content="TechNova gives your team the tools to develop, deploy, and scale all in one place.">
+  <meta name="keywords" content="tech, deployment, developer tools, speed, security">
+  <meta property="og:title" content="TechNova — Build Faster. Ship Smarter.">
+  <meta property="og:description" content="Deploy faster with TechNova.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=600&fit=crop">
+  
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <style>
+    /* ----- RESET & BASE ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background-color: #ffffff;
+      color: #cd8b08;
+      line-height: 1.5;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    
+
+    /* ----- BUTTONS & LINKS ----- */
+    .btn-primary {
+      background: #2b2d42;
+      color: white;
+      border: none;
+      padding: 6rem 10rem;   /*why 2 value */
+      border-radius: 70px;
+      font-weight:800;      font-size: 16px;
+      cursor: pointer;                     /*NA without this also fine*/
+      transition: all 0.2s ease; /*change the val */
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      box-shadow: 0 8px 18px -6px rgba(43, 45, 66, 0.2);  /*na*/
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .btn-primary:hover {
+      background: #1e2235;
+      transform: translateY(-20px);
+      box-shadow: 0 14px 28px -8px rgba(43, 45, 66, 0.3);
+    }
+
+    .btn-primary i {
+      font-size: 50px;
+    }
+
+    /* ----- NAVBAR ----- */
+    .navbar {
+      
+      padding: 20px 9px;
+      border-bottom: 10px solid rgba(120, 225, 15, 0.04);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+      background: rgba(223, 220, 220, 0.92);
+    }
+
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem 0.5rem;
+    }
+
+    /* Logo Text — TechNova (CSS styled) */
+    .logo {
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #1a1e2b;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .logo i {
+      color: #2b2d42;
+      font-size: 2rem;
+    }
+
+    .logo span {
+      background: linear-gradient(145deg, #1a1e2b, #3a3f5c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2d3142;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.15s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #2b2d42;
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #0b0e1a;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links .btn-primary {
+      padding: 0.5rem 1.6rem;
+      font-size: 0.9rem;
+      background: #2b2d42;
+      box-shadow: none;
+    }
+
+    .nav-links .btn-primary:hover {
+      background: #1e2235;
+    }
+
+    /* Mobile hamburger (hidden by default) */
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      color: #1a1e2b;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    /* ----- HERO SECTION ----- */
+    .hero {
+      padding: 3rem 0 4rem 0;
+    }
+
+    .hero .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.2;
+      color: #1a1e2b;
+    }
+
+    .hero-content h1 span {
+      background: linear-gradient(135deg, #2b2d42, #4a4f6e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #3d4359;
+      margin: 1.2rem 0 2rem 0;
+      max-width: 480px;
+      line-height: 1.6;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 32px;
+      box-shadow: 0 30px 50px -20px rgba(0,0,0,0.15);
+      display: block;
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+
+    /* ----- FEATURE CARDS (3) ----- */
+    .features {
+      padding: 2.5rem 0 4rem 0;
+      background: #fafbfc;
+      border-radius: 48px 48px 0 0;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 2rem 1.8rem 2rem 1.8rem;
+      border-radius: 28px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.02);
+      border: 1px solid #eef2f6;
+      transition: all 0.25s ease;
+      text-align: left;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.06);
+      border-color: #dce1e9;
+    }
+
+    .feature-card .icon {
+      font-size: 2.6rem;
+      color: #2b2d42;
+      margin-bottom: 0.8rem;
+      display: inline-block;
+      background: #f0f3f8;
+      padding: 0.7rem;
+      border-radius: 20px;
+      line-height: 1;
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: #1a1e2b;
+    }
+
+    .feature-card p {
+      color: #4d536b;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* ----- FOOTER ----- */
+    .footer {
+      background: #ffffff;
+      border-top: 1px solid #edf1f7;
+      padding: 2rem 0;
+      margin-top: 1rem;
+    }
+
+    .footer .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: #3d4359;
+      font-size: 0.95rem;
+      font-weight: 450;
+      transition: color 0.15s ease;
+    }
+
+    .footer-links a:hover {
+      color: #1a1e2b;
+    }
+
+    .footer-copy {
+      color: #6c728b;
+      font-size: 0.9rem;
+    }
+
+    .footer-copy i {
+      color: #2b2d42;
+      margin-right: 4px;
+    }
+
+    /* ----- RESPONSIVE (mobile first) ----- */
+    @media (max-width: 992px) {
+      .hero .container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-image {
+        order: -1;
+      }
+      .hero-image img {
+        max-height: 340px;
+        object-fit: cover;
+        border-radius: 28px;
+      }
+      .hero-content h1 {
+        font-size: 2.8rem;
+      }
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar .container {
+        flex-wrap: wrap;
+      }
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+        padding: 1rem 0 0.5rem 0;
+        border-top: 1px solid #eef2f6;
+        margin-top: 0.8rem;
+      }
+      .nav-links.open {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
+      }
+      .nav-links .btn-primary {
+        width: 100%;
+        justify-content: center;
+      }
+      .hero-content h1 {
+        font-size: 2.3rem;
+      }
+      .features-grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .footer .container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .footer-links {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1.2rem;
+      }
+      .hero {
+        padding: 1.5rem 0 2.5rem 0;
+      }
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+      .btn-primary {
+        padding: 0.7rem 1.6rem;
+        font-size: 0.95rem;
+      }
+      .feature-card {
+        padding: 1.5rem;
+      }
+    }
+
+    /* small additional */
+    .mt-1 { margin-top: 0.5rem; }
+    .gap-2 { gap: 0.5rem; }
+    .flex-center { display: flex; align-items: center; }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <!-- Logo Text: TechNova (CSS styled) -->
+      <div class="logo">
+        <i class="fas fa-rocket"></i>
+        <span>TechNova</span>
+      </div>
+
+      <!-- Hamburger for mobile -->
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Nav links -->
+      <div class="nav-links" id="navLinks">
+        <a href="#">Home</a>
+        <a href="#">Features</a>
+        <a href="#">Pricing</a>
+        <a href="#">Contact</a>
+        <button class="btn-primary" onclick="alert('🚀 Welcome to TechNova!')">
+          <i class="fas fa-arrow-right"></i> Get Started
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Build Faster. <span>Ship Smarter.</span></h1>
+        <p>TechNova gives your team the tools to develop, deploy, and scale — all in one place.</p>
+        <button class="btn-primary" onclick="alert('✨ Start your free trial!')">
+          <i class="fas fa-cloud-upload-alt"></i> Get Started Free
+        </button>
+      </div>
+      <div class="hero-image">
+        <img 
+          src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=600&fit=crop" 
+          alt="TechNova workspace with modern technology" 
+          loading="lazy"
+        >
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURE CARDS (3) ========== -->
+  <section class="features">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 2.5rem;">
+        <h2 style="font-size: 2.2rem; font-weight: 700; letter-spacing: -0.5px;">Built for speed &amp; trust</h2>
+        <p style="color: #4d536b; max-width: 540px; margin: 0.5rem auto 0 auto;">Everything you need to ship faster, without compromising security.</p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Card 1: Speed -->
+        <div class="feature-card">
+          <div class="icon"><i class="fas fa-bolt"></i></div>
+          <h3>Speed</h3>
+          <p>10x faster deployment pipeline for modern development teams.</p>
+        </div>
+
+        <!-- Card 2: Security -->
+        <div class="feature-card">
+          <div class="icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>Security</h3>
+          <p>Enterprise-grade protection built into every layer.</p>
+        </div>
+
+        <!-- Card 3: Support -->
+        <div class="feature-card">
+          <div class="icon"><i class="fas fa-headset"></i></div>
+          <h3>Support</h3>
+          <p>24/7 expert support whenever you need it most.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-copy">
+        <i class="fas fa-code"></i> © 2026 TechNova. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== MOBILE NAV SCRIPT ========== -->
+  <script>
+    (function() {
+      const hamburger = document.getElementById('hamburgerBtn');
+      const navLinks = document.getElementById('navLinks');
+
+      if (hamburger && navLinks) {
+        hamburger.addEventListener('click', function(e) {
+          e.stopPropagation();
+          navLinks.classList.toggle('open');
+          // toggle icon
+          const icon = hamburger.querySelector('i');
+          if (icon) {
+            if (navLinks.classList.contains('open')) {
+              icon.className = 'fas fa-times';
+            } else {
+              icon.className = 'fas fa-bars';
+            }
+          }
+        });
+
+        // close on link click (optional)
+        navLinks.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', function() {
+            navLinks.classList.remove('open');
+            const icon = hamburger.querySelector('i');
+            if (icon) icon.className = 'fas fa-bars';
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
