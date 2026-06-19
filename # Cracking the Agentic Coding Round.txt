@@ -1,0 +1,216 @@
+# Cracking the Agentic Coding Round
+### A Self-Practice Kit — *Padho with Pratyush*
+
+
+---
+
+
+## What this round actually tests
+
+
+A new kind of interview round is showing up: the **Agentic Coding Round**. You are given a problem where the requirements are a little vague and a few details are missing. You are *allowed* to use any AI agent you like — Claude, Cursor, whatever — to plan, write, and test the solution.
+
+
+Here is the trap most people fall into: they treat it like a normal coding test and let the AI do everything. They fail.
+
+
+This round does not test whether you can code. It tests your **judgment**. You are expected to behave like a **senior engineer**, and treat the AI like a **junior helper**. The architecture, the decisions, and the ownership are yours. The hands belong to the AI.
+
+
+The interviewer is watching one thing: *how well do you lead this junior?*
+
+
+---
+
+
+## The 5 things they are grading you on
+
+
+1. **Clarification** — Did you catch the vague and missing requirements and ask about them *before* writing code? Silently accepting bad requirements is the #1 red flag.
+2. **Planning** — Did you plan first and lead the agent step by step, or dump one giant prompt and hope?
+3. **Ownership** — Were the design and trade-off decisions *yours*, or did you blindly accept the AI's first answer?
+4. **Review & correctness** — Did you catch the AI's mistakes? Does the final code meet the *real* requirements, including the hidden ones?
+5. **Testing** — Did you write your own edge cases, run them, and prove the solution works?
+
+
+A polished-looking solution that ignored a hidden requirement will still **fail**. Remember that.
+
+
+---
+
+
+## How to behave during the round (the senior mindset)
+
+
+- **Clarify out loud.** State your assumptions and edge cases explicitly. If something is unclear, say so and decide deliberately — do not let the AI guess for you.
+- **Plan before code.** Break the problem into steps. Lead the agent through them one at a time.
+- **Stay the decision-maker.** When the AI proposes an approach, ask *why*, weigh the trade-off, and make the call yourself.
+- **Never trust output blindly.** Read every line. Assume the AI made at least one mistake — your job is to find it.
+- **Test like you mean it.** Write your own edge cases. Run them. Don't accept "it should work."
+
+
+> Mental model: **The AI is your intern, not your competitor.** The interviewer is judging how you lead the intern.
+
+
+---
+
+
+## Build your own practice loop (do this at home)
+
+
+You can practice this completely on your own using three AI chats. It is a closed loop: **generate a problem → solve it under time → get graded.**
+
+
+```
+Step 1  →  Generator LLM        : produces a deliberately messy problem
+                                  + a "sealed" answer key you DON'T read
+Step 2  →  Solving agent (you)  : 60 min — clarify, plan, code, test
+                                  (you = senior, AI = junior)
+Step 3  →  Extract              : your full chat + final code + test output
+Step 4  →  Evaluator LLM        : grades you against the sealed key
+                                  pass / fail + improvements
+```
+
+
+Two rules that make this work:
+- **Do not read the sealed answer key** until after you've finished solving. The whole point is to see if *you* surface the hidden stuff on your own.
+- **Use a different model to evaluate** than the one you solved with, if you can. A model tends to rate its own work too kindly.
+
+
+---
+
+
+## The exact prompts
+
+
+### Prompt 1 — Question Generator
+*Paste into a fresh chat. It gives you a problem + a hidden answer key.*
+
+
+```
+You are an interview designer creating an "agentic coding round" problem for a
+mid-to-senior software engineer. The candidate will be allowed to use an AI
+agent freely, so the problem must test JUDGMENT, not raw coding ability.
+
+
+Generate ONE problem with these properties:
+- Realistic and small enough to plan + implement + test within 60 minutes WITH
+ an AI agent.
+- Pick a concrete domain (e.g. a small backend service/endpoint, a CLI tool, a
+ data-processing script, a single feature in an existing module).
+- Requirements must be deliberately IMPERFECT: include some concrete specs, at
+ least 2 vague/underspecified points, at least 1 missing-but-critical detail,
+ and exactly 1 mild contradiction or trap. Do NOT label which is which.
+- The ambiguity must MATTER — a wrong assumption should lead to a meaningfully
+ different design.
+
+
+Output in exactly two sections:
+
+
+=== PROBLEM STATEMENT (give to candidate) ===
+[Write it the way a busy PM/lead would dump it in Slack — a bit messy,
+realistic. ~150-250 words.]
+
+
+=== SEALED EXPECTATIONS (DO NOT READ UNTIL EVALUATION) ===
+- The specific ambiguities a senior should have caught and clarified
+- The hidden/missing requirement and why it matters
+- The contradiction/trap and the correct resolution
+- 4-6 edge cases a senior should have tested
+- 2-3 design decisions where blindly accepting the AI's first answer is a red flag
+```
+
+
+---
+
+
+### Prompt 2 — Solving Agent Setup
+*Paste this to your solving agent FIRST, before sharing the problem. It keeps the AI in junior mode so you stay the senior.*
+
+
+```
+For this session you are my JUNIOR engineer. I am the senior leading the work.
+Rules:
+- Do NOT write full solutions unprompted. When I share the problem, first ask me
+ clarifying questions and surface ambiguities/edge cases you notice. Wait for my
+ decisions.
+- Only implement the specific step I ask for. One step at a time.
+- After writing code, point out risks, assumptions you made, and what you'd want
+ me to review.
+- Never hide uncertainty. If a requirement is unclear, flag it instead of
+ guessing silently.
+- When I ask for tests, write them but let me decide which edge cases matter.
+
+
+I'll paste the problem next. Start by clarifying, not coding.
+```
+
+
+Then **you** run the clock:
+**clarify → lock your assumptions → plan → implement step by step → write & run tests → review.**
+
+
+---
+
+
+### Prompt 3 — Evaluator
+*After your 60 minutes, open a new chat. Paste the four blocks below filled in, then this prompt.*
+
+
+```
+You are a strict senior staff engineer grading a candidate's performance in an
+"agentic coding round." The candidate was allowed to use an AI agent and was told
+to act as a senior engineer treating the AI as a junior helper.
+
+
+I'll give you four things:
+<PROBLEM_STATEMENT> ... </PROBLEM_STATEMENT>
+<SEALED_EXPECTATIONS> ... </SEALED_EXPECTATIONS>
+<FULL_TRANSCRIPT> (the candidate's entire chat with the solving agent) ... </FULL_TRANSCRIPT>
+<FINAL_CODE_AND_TEST_OUTPUT> ... </FINAL_CODE_AND_TEST_OUTPUT>
+
+
+Score each dimension out of 10 with a one-line justification quoting evidence
+from the transcript:
+1. Requirement clarification — did they surface the ambiguities, missing detail,
+  and contradiction from SEALED_EXPECTATIONS BEFORE coding?
+2. Planning & decomposition — did they plan first and lead the agent step-by-step,
+  vs dumping one mega-prompt?
+3. Ownership of decisions — were architecture/tradeoff calls theirs, or did they
+  blindly accept the agent's output?
+4. Code review & correctness — did they catch AI mistakes? Does the final code
+  actually meet the real (incl. hidden) requirements?
+5. Testing — own edge cases, were they run, did they cover the SEALED edge cases?
+6. Communication — clear, senior-level reasoning throughout?
+
+
+Then output:
+- VERDICT: PASS or FAIL. Hard rule: FAIL if they scored below 5 on EITHER
+ clarification OR code review/testing, regardless of other scores.
+- TOP 3 IMPROVEMENTS — specific and actionable, tied to what they actually did.
+- WHAT A SENIOR WOULD HAVE DONE DIFFERENTLY — 3-4 bullets.
+- MISSED ITEMS — list anything from SEALED_EXPECTATIONS they never caught.
+Be honest and harsh. A polished-looking solution that ignored the hidden
+requirement should still FAIL.
+```
+
+
+---
+
+
+## How to use this kit
+
+
+1. Run **Prompt 1**. Copy the problem statement somewhere; **do not read** the sealed expectations.
+2. Open your solving agent, paste **Prompt 2**, then the problem. Start a 60-minute timer.
+3. Lead the work as a senior. Clarify, plan, build step by step, test.
+4. When time is up, gather: the **full chat**, the **final code**, and the **test output**.
+5. Open a fresh chat (ideally a different model), paste **Prompt 3** with all four blocks filled in.
+6. Read your verdict. Fix your weakest dimension. Run it again with a new problem.
+
+
+Do this 4–5 times and you'll walk into the real round already knowing exactly how a senior behaves.
+
+
+---
