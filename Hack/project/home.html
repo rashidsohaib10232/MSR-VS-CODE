@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: antiquewhite;
+            padding: 0px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 25px 1.5rem;
+            flex-wrap: wrap;
+            background-color: aqua;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            
+        }
+
+        .logo{
+            font-size: larger;
+            font-weight: 900;
+            color: rgb(42, 42, 65);
+        }
+        .links{
+            text-decoration: none;
+            color: #2d3142;
+            font-weight: 500;
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .links a{
+            text-decoration: none;
+            color: rgb(131, 5, 250);
+            font-weight: 900;
+        }
+
+        .btn{
+            background-color: black;
+            color: aliceblue;
+            font-size: larger;
+            font-weight: 700;
+            border: none;
+            padding: 18px 10px;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 14px 28px -8px rgb(131, 5, 250);
+        }
+        .btn:hover{
+            background:#2d3142;
+            transform: translate(4px);
+            box-shadow: 0 14px 28px -8px rgba(43, 45, 66, 0.3);
+        }
+
+    </style>
+</head>
+<body>
+    <!--NAVBAR-->
+    <div class="container">
+        <div class="logo">MSR WebApp</div>
+        <ul class ="links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">More</a></li>
+        </ul> 
+    </div>
+    <button class="btn">Click Here</button>
+
+    
+    
+</body>
+</html>
