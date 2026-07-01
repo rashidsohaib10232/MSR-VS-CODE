@@ -73,8 +73,8 @@ body {
 }
 
 .box1, .box2, .box3 {
-    width: 150px;
-    height: 150px;
+    width: 2000px;
+    height: 350px;
     background-color: aquamarine;
     color: rgb(211, 6, 6);
     display: flex;

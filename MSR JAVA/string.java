@@ -1,12 +1,11 @@
 import java.util.*;
-public class string {
-    public static void main(String args[]){
 
+public class string {
+    public static void main(String args[]) {
         String fname = "Sohaib";
         String lname = "Rashid";
-        String fullname = fname+" "+lname;
+        String fullname = fname + " " + lname;
         System.out.println(fullname);
-
 
         Scanner sc = new Scanner(System.in);
         String a = sc.next();
@@ -15,25 +14,23 @@ public class string {
         String rm = a + b;
         System.out.println(rm.length());
 
-        //charAt
-        for(int i =0; i<rm.length(); i++){
-
+        // charAt loop
+        for (int i = 0; i < rm.length(); i++) {
             System.out.println(rm.charAt(i));
         }
 
-        if(a.equals(b)){
+        // equals() comparison
+        if (a.equals(b)) {
             System.out.println("equal");
-        }
-        else{
+        } else {
             System.out.println("not equal");
         }
 
-        if(a.compareTo(b)){
+        // compareTo() comparison
+        if (a.compareTo(b) == 0) {
             System.out.println("equal");
-        }
-        else{
+        } else {
             System.out.println("not equal");
         }
-
     }
 }
