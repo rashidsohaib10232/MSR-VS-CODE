@@ -1,9 +1,13 @@
-f = open('my.txt','a+')
+def mycount():
+    f = open("my.txt" ,'r')
+    r = f.read()
+    s = r.split()
+    count = 0        # counter pehle 0 hona chahiye
+    for i in s:
+        if(i=='my'):
+            count+=1     
 
+    print(count)
 
-
-# 'My',' heart', 'beats' ,'with' ,'my'
-
-r = f.read()
-
-print(r)
+    f.close()
+mycount()

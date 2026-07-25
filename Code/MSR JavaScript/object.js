@@ -17,11 +17,11 @@ const user = {
 // console.log(user.age)
 
 
-const user2 = user;
+// const user2 = user;
 
-user2.age = 90;
+// user2.age = 90;
 
-console.log(user)
+// console.log(user)
 
 // console.log(Object.keys(user))
 // console.log(Object.values(user))
@@ -39,6 +39,16 @@ console.log(user)
 
 
 
-const{name, age }= user;
+// const{name, age }= user;
 
-console.log(name, age)
+// console.log(name, age)
+
+for(let key in user){
+    //console.log(key);
+    //console.log(user[key])
+    //console.log(key, user[key]);
+}
+
+// console.log(Object.keys(user));
+// console.log(Object.entries(user));
+
