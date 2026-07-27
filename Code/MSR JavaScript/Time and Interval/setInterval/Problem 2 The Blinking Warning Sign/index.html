@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blinking Warning</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    h2 {
+      font-size: 40px;
+      color: red;
+    }
+    #dismiss {
+      margin-top: 20px;
+      background-color: #bb86fc;
+      color: #121212;
+      padding: 12px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 8px;
+      
+    }
+  </style>
+</head>
+<body>
+  <!-- Warning text -->
+  <h2 id="warning">WARNING: Low Battery</h2>
+
+  <!-- Dismiss button -->
+  <button id="dismiss">Dismiss</button>
+
+  <!-- Link to external JS file -->
+  <script src="script.js"></script>
+</body>
+</html>

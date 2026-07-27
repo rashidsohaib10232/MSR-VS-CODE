@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval Example</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .counter-display {
+            font-size: 80px;
+            font-weight: bold;
+            color: #03dac6;
+            margin-bottom: 30px;
+        }
+        .buttons {
+            display: flex;
+            gap: 15px;
+        }
+        button {
+            background-color: #bb86fc;
+            color: #121212;
+            border: none;
+            padding: 12px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #9965f4;
+        }
+        #stopBtn {
+            background-color: #cf6679; /* Reddish color for stop */
+        }
+        #stopBtn:hover {
+            background-color: #b35565;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>setInterval Counter</h2>
+    <div class="counter-display" id="count">0</div>
+    
+    <div class="buttons">
+        <button id="startBtn">Start</button>
+        <button id="stopBtn">Stop</button>
+    </div>
+
+    <!-- Linking the separate JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>

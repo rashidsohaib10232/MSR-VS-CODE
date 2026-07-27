@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Download Simulation</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    #progress-container {
+      width: 300px;
+      height: 30px;
+      background-color: #333;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    #bar {
+      width: 0%; /* JS will change this */
+      height: 100%;
+      background-color: #39FF14;
+      transition: width 0.3s ease;
+    }
+
+    #btn {
+      background-color: #bb86fc;
+      color: #121212;
+      padding: 12px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 8px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Download Simulation</h1>
+
+  <!-- Progress bar container -->
+  <div id="progress-container">
+    <div id="bar"></div>
+  </div>
+
+  <!-- Start button -->
+  <button id="btn">Start Download</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
