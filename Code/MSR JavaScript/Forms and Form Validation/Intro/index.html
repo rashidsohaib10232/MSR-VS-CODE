@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile Form</title>
+  <style>
+    body {
+      background-color: #222;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    form {
+      background-color: #333;
+      padding: 30px;
+      border-radius: 10px;
+      width: 300px;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    #btn {
+      margin-top: 20px;
+      background-color: red;
+      color: white;
+      padding: 10px;
+      width: 100%;
+      border-radius: 30px;
+      font-size: large;
+      cursor: pointer;
+    }
+
+    #hide {
+      display: none;
+      color: orange;
+      font-size: small;
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <label for="name">Name</label>
+    <input type="text" id="name" placeholder="Enter your name">
+    <div id="hide">
+      <small>Please enter your full name</small>
+    </div>
+
+    <label for="age">Age</label>
+    <input type="number" id="age" placeholder="Enter your age">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="Enter your email">
+
+    <label for="us">Tell me about you...</label>
+    <textarea id="us" placeholder="Tell me about yourself..."></textarea>
+
+    <input id="btn" type="submit" value="Submit">
+  </form>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
