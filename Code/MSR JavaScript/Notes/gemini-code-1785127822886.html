@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript DOM & Web API Notes</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --heading-color: #bb86fc;
+            --code-bg: #1e1e1e;
+            --code-color: #03dac6;
+            --warning-border: #cf6679;
+            --warning-bg: rgba(207, 102, 121, 0.1);
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 { color: var(--heading-color); text-align: center; font-size: 2.5rem; margin-bottom: 10px;}
+        h2 { color: var(--heading-color); border-bottom: 1px solid #333; padding-bottom: 8px; margin-top: 40px; }
+        h3 { color: #fff; margin-top: 25px; }
+        
+        pre {
+            background-color: var(--code-bg);
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 1px solid #333;
+        }
+        
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--code-color);
+        }
+        
+        /* Inline code styling */
+        p code, li code {
+            background-color: var(--code-bg);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .important {
+            background-color: var(--warning-bg);
+            border-left: 4px solid var(--warning-border);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .important strong { color: var(--warning-border); }
+        
+        ul { padding-left: 20px; }
+        li { margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+
+    <h1>JavaScript DOM & Web APIs</h1>
+    <p style="text-align: center;">Comprehensive Notes for Full-Stack Development Preparation</p>
+
+    <section>
+        <h2>1. Introduction to the DOM (Document Object Model)</h2>
+        <p>The DOM is a programming interface for web documents. It represents the page so that programs can change the document structure, style, and content. It views an HTML document as a tree of nodes (where every HTML tag is a node).</p>
+        
+        <h3>Key Selectors:</h3>
+        <ul>
+            <li><code>document.getElementById("idName")</code>: Returns a single element.</li>
+            <li><code>document.getElementsByClassName("className")</code>: Returns an <em>HTMLCollection</em> (live list).</li>
+            <li><code>document.querySelector("selector")</code>: Returns the <strong>first</strong> element matching a CSS selector.</li>
+            <li><code>document.querySelectorAll("selector")</code>: Returns a <em>NodeList</em> (static list) of all matches.</li>
+        </ul>
+
+        <div class="important">
+            <strong>Interview Gotcha:</strong> <code>getElementsByClassName</code> returns a live HTMLCollection, meaning if the DOM changes, the collection updates. <code>querySelectorAll</code> returns a static NodeList, which does not update dynamically.
+        </div>
+<pre><code>let mainHeading = document.querySelector("h1");
+console.log(mainHeading);</code></pre>
+    </section>
+
+    <section>
+        <h2>2. DOM Manipulation: Modifying Content</h2>
+        <p>Once selected, you can change the content inside an element.</p>
+        <ul>
+            <li><code>innerText</code>: Shows visible text only, respects CSS (ignores hidden text).</li>
+            <li><code>textContent</code>: Shows all text content, including hidden text. Faster than innerText.</li>
+            <li><code>innerHTML</code>: Gets or sets the HTML markup. Parses HTML tags.</li>
+        </ul>
+        <div class="important">
+            <strong>Warning:</strong> Be careful with <code>innerHTML</code> when using user input, as it exposes your site to Cross-Site Scripting (XSS) attacks. Use <code>textContent</code> for pure text.
+        </div>
+<pre><code>let title = document.querySelector("h1");
+title.textContent = "Welcome back!"; // Safe text update
+title.innerHTML = "Welcome &lt;span&gt;back&lt;/span&gt;!"; // Parses tags</code></pre>
+    </section>
+
+    <section>
+        <h2>3. Attribute & Class Manipulation</h2>
+        <h3>Attributes:</h3>
+        <ul>
+            <li><code>getAttribute("attrName")</code>: Reads an attribute.</li>
+            <li><code>setAttribute("attrName", "value")</code>: Changes or adds an attribute.</li>
+        </ul>
+        <h3>Classes (classList):</h3>
+        <ul>
+            <li><code>element.classList.add("class")</code> / <code>.remove("class")</code>: Adds or removes a class.</li>
+            <li><code>element.classList.toggle("class")</code>: Adds if missing, removes if present (great for UI toggles).</li>
+        </ul>
+<pre><code>let link = document.querySelector("a");
+link.setAttribute("href", "https://google.com");
+
+let box = document.querySelector(".box");
+box.classList.toggle("dark-mode");</code></pre>
+    </section>
+
+    <section>
+        <h2>4. Dynamic DOM Manipulation</h2>
+        <p>Creating elements in JavaScript and injecting them into the HTML document.</p>
+        <ul>
+            <li><code>document.createElement("tagName")</code>: Creates an empty node in memory.</li>
+            <li><code>element.appendChild(newNode)</code>: Adds node as the <em>last</em> child.</li>
+            <li><code>element.prepend(newNode)</code>: Adds node as the <em>first</em> child.</li>
+            <li><code>element.style.property</code>: Edits inline CSS (use camelCase, e.g., <code>backgroundColor</code>).</li>
+        </ul>
+<pre><code>let newBtn = document.createElement("button");
+newBtn.textContent = "Click Me";
+newBtn.style.backgroundColor = "blue";
+document.body.appendChild(newBtn);</code></pre>
+    </section>
+
+    <section>
+        <h2>5. Events and Event Handling</h2>
+        <p>Listening for user interactions like clicks, typing, and mouse movements.</p>
+<pre><code>let btn = document.querySelector("button");
+btn.addEventListener("click", function(event) {
+    console.log("Button clicked!");
+    console.log(event.target); // The exact element that was clicked
+});</code></pre>
+    </section>
+
+    <section>
+        <h2>6. Event Bubbling & Delegation (Advanced/Important)</h2>
+        <p><strong>Event Bubbling:</strong> When an event happens on an element, it first runs the handlers on it, then on its parent, then all the way up on other ancestors.</p>
+        <p><strong>Event Delegation:</strong> Instead of adding an event listener to 100 individual list items, you add ONE listener to their parent <code>&lt;ul&gt;</code> and use <code>event.target</code> to figure out which <code>&lt;li&gt;</code> was actually clicked. This saves massive amounts of memory.</p>
+        <ul>
+            <li><code>event.stopPropagation()</code>: Stops the event from bubbling up to parent elements.</li>
+        </ul>
+<pre><code>// Event Delegation Example
+let ul = document.querySelector("ul");
+ul.addEventListener("click", function(event) {
+    if(event.target.tagName === "LI") {
+        console.log("You clicked a list item: " + event.target.innerText);
+    }
+});</code></pre>
+    </section>
+
+    <section>
+        <h2>7. Forms and Form Validation</h2>
+        <p>Handling user inputs and form submissions safely.</p>
+        <div class="important">
+            <strong>Crucial:</strong> Use <code>event.preventDefault()</code> inside a submit event listener to stop the browser from refreshing the page and wiping out your state.
+        </div>
+<pre><code>let form = document.querySelector("form");
+form.addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevents page reload
+    
+    let inputVal = document.querySelector("input").value;
+    if (inputVal === "") {
+        console.log("Error: Input cannot be empty");
+    }
+});</code></pre>
+    </section>
+
+    <section>
+        <h2>8. Timers and Intervals</h2>
+        <p>Executing code after a delay, or executing code continuously at a set interval.</p>
+        <ul>
+            <li><code>setTimeout(callback, ms)</code>: Runs code ONCE after <em>ms</em> milliseconds.</li>
+            <li><code>setInterval(callback, ms)</code>: Runs code REPEATEDLY every <em>ms</em> milliseconds.</li>
+            <li><code>clearTimeout(id)</code> / <code>clearInterval(id)</code>: Stops the timer.</li>
+        </ul>
+<pre><code>// Runs once after 2 seconds
+setTimeout(function() {
+    console.log("2 seconds have passed!");
+}, 2000);
+
+// Runs every 1 second
+let intervalId = setInterval(function() {
+    console.log("Tick...");
+}, 1000);
+
+// Stop the interval after 5 seconds
+setTimeout(function() {
+    clearInterval(intervalId);
+}, 5000);</code></pre>
+    </section>
+
+    <section>
+        <h2>9. Asynchronous JS & Fetch API (Network Requests)</h2>
+        <p>How JavaScript talks to servers, databases, and third-party APIs without reloading the page. Modern JS uses <code>fetch()</code> which returns a <strong>Promise</strong>.</p>
+        <p>A Promise represents the eventual completion (or failure) of an asynchronous operation.</p>
+<pre><code>// Using async/await (Modern approach)
+async function getUserData() {
+    try {
+        // 1. Fetch data from an API
+        let response = await fetch("https://jsonplaceholder.typicode.com/users/1");
+        
+        // 2. Convert response to JSON object
+        let data = await response.json(); 
+        
+        console.log(data.name); 
+    } catch (error) {
+        console.error("Something went wrong:", error);
+    }
+}
+getUserData();</code></pre>
+    </section>
+
+    <section>
+        <h2>10. Storage (localStorage & sessionStorage)</h2>
+        <p>Saving data in the browser so it persists across page reloads.</p>
+        <ul>
+            <li><strong>localStorage:</strong> Persists until explicitly deleted.</li>
+            <li><strong>sessionStorage:</strong> Deleted when the browser tab is closed.</li>
+        </ul>
+        <div class="important">
+            <strong>Rule:</strong> Storage APIs can ONLY store Strings. To save an array or object, you must turn it into a string first using <code>JSON.stringify()</code>, and convert it back using <code>JSON.parse()</code>.
+        </div>
+<pre><code>let user = { name: "Akash", role: "Developer" };
+
+// Save to storage
+localStorage.setItem("currentUser", JSON.stringify(user));
+
+// Retrieve from storage
+let storedString = localStorage.getItem("currentUser");
+let retrievedUser = JSON.parse(storedString);
+
+console.log(retrievedUser.role); // Outputs: Developer</code></pre>
+    </section>
+
+</body>
+</html>
