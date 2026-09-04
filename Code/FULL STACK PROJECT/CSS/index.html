@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       p{
+        background-color: rgb(174, 174, 194);
+       } 
+       .p{
+        background-color: aquamarine;
+       }
+       #if{
+        background-color: beige;
+       }
+
+       input[type = 'text']{
+        padding: 100px;
+        background-color: red;
+       }
+       button{
+        background-color: brown;
+        /* Psedudo Selector */
+       }
+       button:hover{
+        background-color: aquamarine;
+        padding: 10px;
+        border: 2px solid red;
+       }
+       /* Selector List */
+       h1,h2{
+        background-color: brown;
+       }
+
+       #kk {
+            text-decoration: line-through;
+            text-transform: uppercase;
+            text-align: center;
+        }
+        /* Flex Box */
+        .box{
+            height: 100px;
+            width: 100px;
+            border: 2px solid red;
+            /* margin: 8px; */
+        }
+/* flex---->hor */
+        .conatiner{
+            display: flex; 
+            /* flex-direction: row; */
+            /* justify-content: center; */
+            /* justify-content: space-evenly; */
+            flex-direction: column;
+            align-items: center;
+            gap: 100px 50px;
+            border: 1px solid blue;
+
+
+        }
+
+
+       /* Css-styling */
+       .style{
+        color: blue;
+        background-color: aqua;
+        /* padding: 10px; */
+        padding-top: 50px;
+        padding-bottom: 100px;
+        padding-right: 10px;
+        padding-left: 90px;
+        /* top right bottom left */
+        /* border: 10px solid yellowgreen;
+        body{
+            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6CtB21hM-cSrGQHHw2G9PWsNzvpUXsT5pY1JOOaTr6A&s=10);
+            background-size: cover;
+       }
+             */
+       
+        
+
+       }
+    </style>
+</head>
+<body>
+    <h1>This is all about CSS</h1>
+    <h2>This is from SELECTOR LIST</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, ut.</p>
+    <p class="p">Lorem ipsum dolor sit amet.</p>
+    <p id="if">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non.</p>
+    <input type="text">
+    <button>Hover Me</button>
+<!--CSS_STYLING-->
+    <p class="style">This is CSS styling Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, reiciendis. </p>
+    <!--TEXT_DECO-->
+    <p id="kk">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+    <!--Flex-Box-->
+    <div class="conatiner">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+
+    </div>
+</body>
+</html>
