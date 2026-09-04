@@ -8,7 +8,6 @@ let occup = document.getElementById("occup");
 form.addEventListener("submit", function(e) {
     e.preventDefault();
 
-    
     uname.textContent = document.getElementById("name").value;
     uage.textContent = document.getElementById("age").value;
     uemail.textContent = document.getElementById("email").value;
@@ -19,5 +18,4 @@ form.addEventListener("submit", function(e) {
     if (photoLink) {
         uprofile.src = photoLink;
     }
-    
 });
